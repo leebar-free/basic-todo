@@ -1,32 +1,69 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+  <div id="app" class="container">
+    <h1 class="text-center">Todo App</h1>
+    <!-- <CompletedTodo :todos="todos" /> -->
+    <CompletedTodo  />
+    <AddTodo />
+    <hr>
+    <TodoList />
+    <UserList />
+
+    <!-- {{ todos }} -->
+
   </div>
 </template>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script>
+import TodoList from '@/components/TodoList.vue';
+import AddTodo from '@/components/AddTodo.vue';
+import CompletedTodo from '@/components/CompletedTodo.vue';
+import UserList from '@/components/UserList.vue';
 
-#nav {
-  padding: 30px;
-}
+export default {
+  components: {
+    TodoList,
+    AddTodo,
+    CompletedTodo,
+    UserList
+  },
+  data() {
+    return {
+      todoText: '',
+      // todos: [
+      //   {id: 1, text: 'buy a car', checked: false},
+      //   {id: 2, text: 'play game', checked: true},
+      // ]
+    }
+  },
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
+  methods: {
+    // addTodo(value) {
+    //   console.log("addTodo :: " + value);
+      // this.todos.push({ 
+      //   id: Math.random(),
+      //   text: value,
+      //   checked: false
+      // });
+    //   this.todoText = '';
+    // },
+    // toggleCheckbox( {id, checked} ) {
+    //   console.log(id, checked);
+    //   const index = this.todos.findIndex(todo => {
+    //     return todo.id === id;
+    //   });
+    //   this.todos[index].checked = checked;
+    // },
+    // deleteTodo(id) {
+      // 1. 삭제 1안
+      // const index = this.todos.findIndex(todo => {
+      //   return todo.id === id;
+      // });
+      // this.todos.splice(index, 1);
 
-#nav a.router-link-exact-active {
-  color: #42b983;
+      // 2. 삭제 2안
+      // this.todos = this.todos.filter(todo => todo.id !== id);
+    // }
+  }
+  
 }
-</style>
+</script>
